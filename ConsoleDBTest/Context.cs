@@ -13,9 +13,7 @@ public class SupContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        
-        //var foo = System.IO.Directory.GetCurrentDirectory(); Set to BIN. Needs to not be bin.
-        optionsBuilder.UseSqlite("Data Source=./Superhero.db;");
+        optionsBuilder.UseSqlite($"Data Source=./Superhero.db;");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

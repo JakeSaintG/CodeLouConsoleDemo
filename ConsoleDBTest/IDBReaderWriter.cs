@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleDBTest;
 
-internal interface IGetFromDb
+internal interface IDBReaderWriter
 {
-    Superhero GetSupById(string id); 
+    Superhero GetHeroById(string id);
+    void AddSuperHero();
+    void ShowAllCatchPhrases();
 }
