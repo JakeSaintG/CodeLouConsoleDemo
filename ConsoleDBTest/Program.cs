@@ -1,14 +1,15 @@
 ﻿using ConsoleDBTest;
 using Microsoft.Extensions.DependencyInjection;
 using ConsoleDBTest.Utils;
+using ConsoleDBTest.Repositories;
 
 var services = CreateServiceCollection();
-var utils = services.GetService<IDbUtils>();
-var dBReaderWriter = services.GetService<IDBReaderWriter>();
 
+IDbUtils? utils = services.GetService<IDbUtils>();
+IDBReaderWriter? dBReaderWriter = services.GetService<IDBReaderWriter>();
 
 utils.EnsureDbExists();
-var run = true;
+bool run = true;
 
 Console.WriteLine("=====================================");
 Console.WriteLine("===Welcome to Hero Catchphrase DB!===");
@@ -21,7 +22,7 @@ while (run)
     Console.WriteLine("-> Press 2 to view");
     Console.WriteLine("-> Press 3 to exit");
 
-    var input = Console.ReadLine();
+    string input = Console.ReadLine();
     Console.WriteLine("");
 
     switch (input)
@@ -45,6 +46,7 @@ while (run)
     Console.WriteLine("");
 }
 
+//Leaving in Program.cs for now but could be moved elsewhere.
 static IServiceProvider CreateServiceCollection()
 {
     return new ServiceCollection()

@@ -1,11 +1,6 @@
 ﻿using ConsoleDBTest.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConsoleDBTest;
+namespace ConsoleDBTest.Repositories;
 
 public class DBReaderWriter : IDBReaderWriter
 {
@@ -16,20 +11,21 @@ public class DBReaderWriter : IDBReaderWriter
         _context = context;
     }
 
-    public void ShowAllCatchPhrases() 
+    public void ShowAllCatchPhrases()
     {
         Console.WriteLine("Showing all saved catchphrases:");
-        _context.Superheros.ToList().ForEach(h => { 
+        _context.Superheros.ToList().ForEach(h =>
+        {
             Console.WriteLine($"- {h.Name} once said: {h.CatchPhrase}");
         });
     }
 
-    public Superhero GetHeroById(string id) 
-    { 
+    public Superhero GetHeroById(string id)
+    {
         return _context.Superheros.SingleOrDefault(s => s.Id == id);
     }
 
-    public void AddSuperHero() 
+    public void AddSuperHero()
     {
         Superhero hero = new Superhero();
         hero.Id = Guid.NewGuid().ToString();
